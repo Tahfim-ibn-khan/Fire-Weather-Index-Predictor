@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 py-10">
+    <div class="max-w-xl mx-auto bg-white shadow-lg rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-center text-blue-900 mb-6">🔥 Fire Weather Index (FWI) Prediction</h2>
+        <form action="/predict" method="post" class="space-y-4">
+
+            <div>
+                <label class="block font-semibold mb-1">Temperature (22–42°C):</label>
+                <input type="number" step="0.1" name="Temperature" min="22" max="42" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Relative Humidity (21–90%):</label>
+                <input type="number" step="0.1" name="RH" min="21" max="90" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Wind Speed (6–29 km/h):</label>
+                <input type="number" step="0.1" name="Ws" min="6" max="29" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Rainfall (0–16.8 mm):</label>
+                <input type="number" step="0.1" name="Rain" min="0" max="16.8" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">FFMC (28.6–92.5):</label>
+                <input type="number" step="0.1" name="FFMC" min="28.6" max="92.5" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">DMC (1.1–65.9):</label>
+                <input type="number" step="0.1" name="DMC" min="1.1" max="65.9" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">ISI (0–18.5):</label>
+                <input type="number" step="0.1" name="ISI" min="0" max="18.5" required
+                    class="w-full border border-gray-300 rounded px-3 py-2">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Class:</label>
+                <select name="Classes" required class="w-full border border-gray-300 rounded px-3 py-2">
+                    <option value="0">Not Fire</option>
+                    <option value="1">Fire</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Region:</label>
+                <select name="Region" required class="w-full border border-gray-300 rounded px-3 py-2">
+                    <option value="0">Bejaia</option>
+                    <option value="1">Sidi Bel-abbes</option>
+                </select>
+            </div>
+
+            <div class="flex gap-4 mt-6">
+                <input type="submit" value="Predict FWI"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded cursor-pointer">
+                <input type="reset" value="Reset"
+                    class="w-full bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded cursor-pointer">
+            </div>
+        </form>
+
+        {% if result is not none %}
+            <div class="text-center mt-6 text-lg font-semibold text-gray-800">
+                Predicted FWI: <span class="text-blue-700">{{ result }}</span>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
