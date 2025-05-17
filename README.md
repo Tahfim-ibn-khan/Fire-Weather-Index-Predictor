@@ -8,10 +8,10 @@ This project predicts the Fire Weather Index (FWI) based on features like temper
 -  Linear Regression Model Training  
 -  Model Selection and Pickling  
 -  FastAPI Web Application  
--  Deployment on AWS (EC2 or Render-ready)
+-  Deployment on Render
 
 ## Tech Stack
 - Python, Pandas, Scikit-Learn, Matplotlib, Seaborn
 - FastAPI, Jinja2
-- AWS cloud for deployment
+- Render for deployment
 
